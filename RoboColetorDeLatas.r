@@ -1,7 +1,22 @@
-tamanhoMalha = 10
-movimentosMaximos = 200 
+tamanhoMalha = 20
+movimentosMaximos = 500 
 tamanhoPopulacao = 100
 numeroGeracoes = 100
+
+#gera malha
+malha <- matrix(0, nrow = tamanhoMalha, ncol = tamanhoMalha) 
+preenchido = 0
+preencher = (((tamanhoMalha*tamanhoMalha)/100)*20)
+while (preenchido <= preencher){
+  linha = sample(1:tamanhoMalha, 1, replace = TRUE)
+  coluna = sample(1:tamanhoMalha, 1, replace = TRUE)
+  if (malha[linha,coluna]== 0)
+  {
+    malha[linha,coluna] = 1
+    preenchido = preenchido + 1
+  } 
+}
+
 
 funObjetivo <- function (cromossomo, malhaLatas)
 {
@@ -97,13 +112,11 @@ fitness <- function(pop, malha){
   return(vet_fitness)
 }
 
-crossover <- function(pop) {
+crossover <- function(pop, pos1, pos2) {
   pc = 0.75
   posCrossover = sample(1:4, 1, replace = FALSE)
-  posicao1=sample(1:tamanhoPopulacao, 1, replace = FALSE)
-  posicao2=sample(1:tamanhoPopulacao, 1, replace = FALSE)
   if (runif(1) < pc) {
-    pop[posicao1, posCrossover] = pop[posicao2, posCrossover]
+    pop[pos1, posCrossover] = pop[pos2, posCrossover]
   }
   
   return(pop)
@@ -142,19 +155,6 @@ selecao <- function(populacao){
 }
 
 ga_v1 <- function(tp, ng){
-  #gera malha
-  malha <- matrix(0, nrow = tamanhoMalha, ncol = tamanhoMalha) 
-  preenchido = 0
-  preencher = (((tamanhoMalha*tamanhoMalha)/100)*20)
-  while (preenchido <= preencher){
-    linha = sample(1:tamanhoMalha, 1, replace = TRUE)
-    coluna = sample(1:tamanhoMalha, 1, replace = TRUE)
-    if (malha[linha,coluna]== 0)
-    {
-      malha[linha,coluna] = 1
-      preenchido = preenchido + 1
-    } 
-  }
   
   # Cria uma população de indivíduos
   # Cada cromossomo é uma linha da matriz, 4 para o genoma, e 1 para o fit do individuo
@@ -199,7 +199,7 @@ ga_v1 <- function(tp, ng){
     i = 1
     #crossover
     while (i < nrow(pop)) {
-      pop = crossover(pop)
+      pop = crossover(pop, i, i+1)
       i = i+2
     }
     i = 1
