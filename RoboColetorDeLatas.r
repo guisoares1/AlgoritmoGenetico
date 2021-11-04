@@ -1,5 +1,10 @@
-tamanhoMalha = 20
-movimentosMaximos = 500 
+## malha 20X20
+#tamanhoMalha = 20
+#movimentosMaximos = 500 
+## malha 10X10
+tamanhoMalha = 10
+movimentosMaximos = 240
+
 tamanhoPopulacao = 100
 numeroGeracoes = 100
 
@@ -103,6 +108,7 @@ mutacao <- function(pop, posicao) {
 
 fitness <- function(pop, malha){
   vet_fitness = c()
+  i = 1
   for (i in 1:nrow(pop)) 
   {
     cromoss = pop[i,]
@@ -125,6 +131,7 @@ crossover <- function(pop, pos1, pos2) {
 selecao <- function(populacao){
   k = 0.75
   popSelecao <- matrix(0, nrow = tamanhoPopulacao, ncol = 5 )
+  i = 1
   for (i in 1:(tamanhoPopulacao))
   {
     posicao1=sample(1:tamanhoPopulacao, 1, replace = FALSE)
@@ -174,35 +181,38 @@ ga_v1 <- function(tp, ng){
   
   gen=0
   #testar gerações
-  while (gen < ng) {
+  while (gen < ng && max(fit)!=1) {
     fit = fitness(pop, malha)
     #atribuo o fit ao individuo
+    i=1
     for (i in 1:nrow(pop))
     {
       pop[i, 5] = fit[i]
     }
-    Better = pop[which.max(fit),]
+    
     #fit
-    cat(gen, "\t", max(fit), "\t", mean(fit), "\n")
+  #  cat(gen, "\t", max(fit), "\t", mean(fit), "\n")
+    Better = pop[which.max(fit),]
+    pop[1, ] = Better
     pool = matrix(0, nrow = tamanhoPopulacao, ncol = 5 )
     pool = selecao(pop)
     
     oldpop = pop
     oldfit = fit
     #seleção
-    pop[1, ] = Better
+    
     i = 2
     for (i in 1:nrow(pop)) {
       pop[i,] = pool[i,]
     }
     
-    i = 1
+    i = 2
     #crossover
     while (i < nrow(pop)) {
       pop = crossover(pop, i, i+1)
       i = i+2
     }
-    i = 1
+    i = 2
     #mutacao
     for (i in 1:nrow(pop)) {
       pop[i,] = mutacao(pop,i)
@@ -219,7 +229,9 @@ ga_v1 <- function(tp, ng){
     
     gen = gen+1
     cat(gen, "\t", max(fit), "\t", mean(fit), "\n")
-  }  
+  } 
+  melhor = which.max(fit)
+  cat(gen,"cima", pop[melhor,1], "\t Baixo ",pop[melhor,2], "\t Direita ",pop[melhor,3], "\t Esquerda ",pop[melhor,4] )
   # mutações
   #resultado
   
