@@ -10,53 +10,53 @@ Para auxiliar no desenvolvimento foi utilizado a IDE [*Rstudio*](https://www.rst
 
 # Descrição do projeto
 
-Inicialmente foi criado uma malha que irá representar o local que o robo irá se movimentar.
+Inicialmente foi criado uma malha que irá representar o local onde o robô irá se movimentar.
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/Algoritmogenetico1.png)
 
-O *0* representa ausencia de lata e o *1* a sua existencia. 
-O robo é representado por um vetor XY, que percorre a malha procurando pelas latas.
-Para identificar o melhor individuo e executar o processo evolutivo, executei a seguinte estratégia:
-- Criado uma população de indivíduos que irá percorrer a malha e procurar pelas latas.
-- Atráver dos feedbacks apresentados, seleciono os melhores indivíduos.
-- O algoritmo de geração de gerações executa até o valor limite colocado pelo usuário ou o melhor individuo ter consegui recolher todas as latas.
+O *0* representa ausência de lata e o *1* a sua existência. 
+O robô é representado por um vetor XY, que percorre a malha procurando pelas latas.
+Para identificar o melhor indivíduo e executar o processo evolutivo, executei a seguinte estratégia:
+- Criar uma população de indivíduos que irá percorrer a malha e procurar pelas latas.
+- Através dos feedbacks apresentados, seleciono os melhores indivíduos.
+- O algoritmo de geração de gerações executa até o valor limite colocado pelo usuário ou o melhor indivíduo ter conseguido recolher todas as latas.
 
 ## População
-Para a criação da população foi criado uma matriz de N por 5 elementos elementos.
+Para a criação da população foi criado uma matriz de N por 5 elementos.
 Cada elemento da matriz é a representação de um cromossomo que segue a seguinte estrutura:
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/Algoritmogenetico2.png)
-- Posição 1: representa tendencia que o individuo tem de ir para cima.
-- Posição 2: representa tendencia que o individuo tem de ir para baixo.
-- Posição 3: representa tendencia que o individuo tem de ir para direita.
-- Posição 4: representa tendencia que o individuo tem de ir para esquerda.
+- Posição 1: representa a tendência que o indivíduo tem de ir para cima.
+- Posição 2: representa a tendência que o indivíduo tem de ir para baixo.
+- Posição 3: representa a tendência que o indivíduo tem de ir para direita.
+- Posição 4: apresenta tendência que o indivíduo tem de ir para a esquerda.
 - Posição 5: representa o seu valor de função fitness.
 
 ## Função fitness
-Seguindo o menu do tópico anterior, é utilizado uma roleta parametrizada com os seus genomas, isto é, quanto maior a tendencia do individuo de um dos números maiores serão a chance do número ser selecionado.
+Seguindo o menu do tópico anterior, é utilizado uma roleta parametrizada com os seus genomas, isto é, quanto maior a tendência do indivíduo de um dos números, maiores serão a chance do número ser selecionado.
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico6.png)
 
 A função fitness é responsável por classificar quais são os melhores indivíduos, faz toda a parte lógica de aplicação de regras pré estabelecidas e no final dá um retorno de qual a qualidade do cromossomo.
 
-O valor varia de 0 a 1. Quanto mais próximo de 1, melhor o individuo é. 
+O valor varia de 0 a 1. Quanto mais próximo de 1, melhor o indivíduo é. 
 
-Calculo feito: *totalDeLatas / TotalLatasEncontradas*.
+Cálculo feito: *totalDeLatas / TotalLatasEncontradas*.
 
 ## Gerações
 Para geração de novos indivíduos utilizei a seguinte estratégia:
 
-- No inicio de cada geração calculo o fitness de todos os indivíduos.
-- Garanto o melhor individuo na próxima geração.
-- Utilizo da função *Selecao* que contem uma estratégia de torneio para me fornecer os melhores indivíduos K% das vezes. 
+- No início de cada geração calculo o fitness de todos os indivíduos.
+- Garanto o melhor indivíduo na próxima geração.
+- Utilizo da função *Selecao* que contém uma estratégia de torneio para me fornecer os melhores indivíduos K% das vezes. 
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/AlgoritmoGenetico3.png)
 
-- Após a seleção é feito o crossover dos indivíduos. É selecionado dois cromossomo aleatóriamente e em K% das vezes o individuo 1 tem um dos seus genomas sobrescrito pelo individuo 2 .
+- Após a seleção é feito o crossover dos indivíduos. É selecionado dois cromossomos aleatoriamente e em K% das vezes o indivíduo 1 tem um dos seus genomas sobrescrito pelo indivíduo 2 .
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico4.png)
 
-- A mutação ocorre após o passo anterior. É adicionado aleatóriamente um valor de 0 a 1 dentro de um dos genomas do cromossomo.
+- A mutação ocorre após o passo anterior. É adicionado aleatoriamente um valor de 0 a 1 dentro de um dos genomas do cromossomo.
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico5.png)
 
