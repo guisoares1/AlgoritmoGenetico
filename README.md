@@ -17,8 +17,8 @@ Inicialmente foi criado uma malha que irá representar o local que o robo irá s
 O *0* representa ausencia de lata e o *1* a sua existencia. 
 O robo é representado por um vetor XY, que percorre a malha procurando pelas latas.
 Para identificar o melhor individuo e executar o processo evolutivo, executei a seguinte estratégia:
-- Criado uma população de individuos que irá percorrer a malha e procurar pelas latas.
-- Atráver dos feedbacks apresentados, seleciono os melhores individuos.
+- Criado uma população de indivíduos que irá percorrer a malha e procurar pelas latas.
+- Atráver dos feedbacks apresentados, seleciono os melhores indivíduos.
 - O algoritmo de geração de gerações executa até o valor limite colocado pelo usuário ou o melhor individuo ter consegui recolher todas as latas.
 
 ## População
@@ -37,22 +37,22 @@ Seguindo o menu do tópico anterior, é utilizado uma roleta parametrizada com o
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico6.png)
 
-A função fitness é responsável por classificar quais são os melhores individuos, faz toda a parte lógica de aplicação de regras pré estabelecidas e no final dá um retorno de qual a qualidade do cromossomo.
+A função fitness é responsável por classificar quais são os melhores indivíduos, faz toda a parte lógica de aplicação de regras pré estabelecidas e no final dá um retorno de qual a qualidade do cromossomo.
 
 O valor varia de 0 a 1. Quanto mais próximo de 1, melhor o individuo é. 
 
 Calculo feito: *totalDeLatas / TotalLatasEncontradas*.
 
 ## Gerações
-Para geração de novos individuos utilizei a seguinte estratégia:
+Para geração de novos indivíduos utilizei a seguinte estratégia:
 
-- No inicio de cada geração calculo o fitness de todos os individuos.
+- No inicio de cada geração calculo o fitness de todos os indivíduos.
 - Garanto o melhor individuo na próxima geração.
-- Utilizo da função *Selecao* que contem uma estratégia de torneio para me fornecer os melhores individuos K% das vezes. 
+- Utilizo da função *Selecao* que contem uma estratégia de torneio para me fornecer os melhores indivíduos K% das vezes. 
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/AlgoritmoGenetico3.png)
 
-- Após a seleção é feito o crossover dos individuos. É selecionado dois cromossomo aleatóriamente e em K% das vezes o individuo 1 tem um dos seus genomas sobrescrito pelo individuo 2 .
+- Após a seleção é feito o crossover dos indivíduos. É selecionado dois cromossomo aleatóriamente e em K% das vezes o individuo 1 tem um dos seus genomas sobrescrito pelo individuo 2 .
 
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico4.png)
 
