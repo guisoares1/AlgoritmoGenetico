@@ -63,3 +63,6 @@ Para geração de novos individuos utilizei a seguinte estratégia:
 
 # Referências
 https://www.inf.ufpr.br/aurora/tutoriais/Ceapostila.pdf
+
+# Professor
+
