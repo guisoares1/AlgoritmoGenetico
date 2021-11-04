@@ -32,13 +32,15 @@ Cada elemento da matriz é a representação de um cromossomo que segue a seguin
 - Posição 5: representa o seu valor de função fitness.
 
 ## Função fitness
-Essa função é responsável por classificar quais são os melhores individuos, faz toda a parte lógica de aplicação de regras pré estabelecidas e no final dá um retorno de qual a qualidade do cromossomo.
+Seguindo o menu do tópico anterior, é utilizado uma roleta parametrizada com os seus genomas, isto é, quanto maior a tendencia do individuo de um dos números maiores serão a chance do número ser selecionado.
+
+![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico6.png)
+
+A função fitness é responsável por classificar quais são os melhores individuos, faz toda a parte lógica de aplicação de regras pré estabelecidas e no final dá um retorno de qual a qualidade do cromossomo.
 
 O valor varia de 0 a 1. Quanto mais próximo de 1, melhor o individuo é. 
 
 Calculo feito: *totalDeLatas / TotalLatasEncontradas*.
-
-Nome da função implementada: *funObjetivo*
 
 ## Gerações
 Para geração de novos individuos utilizei a seguinte estratégia:
