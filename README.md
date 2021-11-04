@@ -11,6 +11,7 @@ Para auxiliar no desenvolvimento foi utilizado a IDE [*Rstudio*](https://www.rst
 # Descrição do projeto
 
 Inicialmente foi criado uma malha que irá representar o local que o robo irá se movimentar.
+
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/Algoritmogenetico1.png)
 
 O *0* representa ausencia de lata e o *1* a sua existencia. 
@@ -60,9 +61,45 @@ Para geração de novos individuos utilizei a seguinte estratégia:
 ![alt text](https://github.com/guisoares1/Imagens/blob/main/algoritmoGenetico5.png)
 
 # Resultados obtidos
+Malha 10X10, máximo de movimentos 240.
+
+Geração que catou todas as latas:
+
+| Experimento         |  Geração            |
+| ------------------- | ------------------- |
+|  1                  |  84                 |
+|  2                  |  35                 |
+|  3                  |  48                 |
+|  4                  |  20                 |
+|  5                  |  72                 |
+|  6                  |  23                 |
+|  7                  |  10                 |
+|  8                  |  05                 |
+|  9                  |  45                 |
+|  10                 |  37                 |
+---------------
+Malha 20X20, máximo de movimentos 1000.
+
+Geração que catou todas as latas:
+
+| Experimento         |  Geração            |
+| ------------------- | ------------------- |
+|  1                  |  502                |
+|  2                  |  527                |
+|  3                  |  487                |
+|  4                  |  473                |
+|  5                  |  469                |
+|  6                  |  521                |
+|  7                  |  533                |
+|  8                  |  550                |
+|  9                  |  520                |
+|  10                 |  512                |
 
 # Referências
-https://www.inf.ufpr.br/aurora/tutoriais/Ceapostila.pdf
+- https://www.inf.ufpr.br/aurora/tutoriais/Ceapostila.pdf
+- https://www.ic.unicamp.br/~rocha/teaching/2011s1/mc906/aulas/computacao-evolutiva-uma-abordagem-pragmatica.pdf
+- https://proceedings.science/series/23/proceedings_non_indexed/60
+- https://web.icmc.usp.br/SCATUSU/RT/nd_75.pdf
 
 # Professor
-
+[Paulo Henrique](http://www.portal.facom.ufu.br/pessoas/docentes/paulo-henrique-ribeiro-gabriel)
